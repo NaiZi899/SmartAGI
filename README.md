@@ -1,95 +1,178 @@
 <p align="center">
 	<img alt="logo" src="https://oscimg.oschina.net/oscnet/up-d3d0a9303e11d522a06cd263f3079027715.png">
 </p>
-<h1 align="center" style="margin: 30px 0 30px; font-weight: bold;">RuoYi v3.8.9</h1>
-<h4 align="center">基于SpringBoot+Vue前后端分离的Java快速开发框架</h4>
+<h1 align="center" style="margin: 30px 0 30px; font-weight: bold;">智慧助农 SmartAGl</h1>
+<h4 align="center">基于若依 (RuoYi v3.8.9) 前后端分离框架的智慧农业综合服务平台</h4>
 <p align="center">
-	<a href="https://gitee.com/y_project/RuoYi-Vue/stargazers"><img src="https://gitee.com/y_project/RuoYi-Vue/badge/star.svg?theme=dark"></a>
-	<a href="https://gitee.com/y_project/RuoYi-Vue"><img src="https://img.shields.io/badge/RuoYi-v3.8.9-brightgreen.svg"></a>
-	<a href="https://gitee.com/y_project/RuoYi-Vue/blob/master/LICENSE"><img src="https://img.shields.io/github/license/mashape/apistatus.svg"></a>
+	<a href="https://ruoyi.vip"><img src="https://img.shields.io/badge/RuoYi-v3.8.9-brightgreen.svg"></a>
+	<a href="./LICENSE"><img src="https://img.shields.io/github/license/mashape/apistatus.svg"></a>
+	<a href="https://gitee.com/baizi-1/SmartAGl"><img src="https://img.shields.io/badge/Gitee-智慧助农-red.svg"></a>
 </p>
 
-## 平台简介
+## 项目简介
 
-若依是一套全部开源的快速开发平台，毫无保留给个人及企业免费使用。
+智慧助农（SmartAGl）是一个基于 [RuoYi-Vue](https://gitee.com/y_project/RuoYi-Vue) 前后端分离框架的智慧农业管理平台。平台面向农民和农业从业者，提供农产品信息管理、农业知识在线学习、惠农补贴政策查询、农事工作管理、农业专家咨询、信用贷款申请及农产品市场行情等一站式服务，助力农业数字化转型与乡村振兴。
 
-* 前端采用Vue、Element UI。
-* 后端采用Spring Boot、Spring Security、Redis & Jwt。
-* 权限认证使用Jwt，支持多终端认证系统。
-* 支持加载动态权限菜单，多方式轻松权限控制。
-* 高效率开发，使用代码生成器可以一键生成前后端代码。
-* 提供了技术栈（[Vue3](https://v3.cn.vuejs.org) [Element Plus](https://element-plus.org/zh-CN) [Vite](https://cn.vitejs.dev)）版本[RuoYi-Vue3](https://gitcode.com/yangzongzhuan/RuoYi-Vue3)，保持同步更新。
-* 提供了单应用版本[RuoYi-Vue-fast](https://gitcode.com/yangzongzhuan/RuoYi-Vue-fast)，Oracle版本[RuoYi-Vue-Oracle](https://gitcode.com/yangzongzhuan/RuoYi-Vue-Oracle)，保持同步更新。
-* 不分离版本，请移步[RuoYi](https://gitee.com/y_project/RuoYi)，微服务版本，请移步[RuoYi-Cloud](https://gitee.com/y_project/RuoYi-Cloud)
-* 阿里云折扣场：[点我进入](http://aly.ruoyi.vip)，腾讯云秒杀场：[点我进入](http://txy.ruoyi.vip)&nbsp;&nbsp;
+## 系统截图
+
+| 首页面板 | 农产品管理 |
+|---------|-----------|
+| ![首页](./Image/home.jpg) | ![农产品管理](./Image/produce.jpg) |
+
+| 知识课程 | 补贴政策 |
+|---------|---------|
+| ![知识课程](./Image/course.jpg) | ![补贴政策](./Image/policy.jpg) |
+
+| 农事工作 | 信用贷款 |
+|---------|---------|
+| ![农事工作](./Image/work.jpg) | ![信用贷款](./Image/loan.jpg) |
+
+| 数据导出 |
+|---------|
+| ![数据导出](./Image/export.jpg) |
+
+## 技术栈
+
+| 层级 | 技术 | 版本 |
+|------|------|------|
+| 后端框架 | Spring Boot | 2.5.15 |
+| 安全框架 | Spring Security | 5.7.12 |
+| 前端框架 | Vue 2 + Element UI | — |
+| 数据库 | MySQL | — |
+| 连接池 | Druid | 1.2.23 |
+| 接口文档 | Swagger 3 / Knife4j | 3.0.0 |
+| 定时任务 | Quartz | — |
+| 缓存 | Redis | — |
+| 认证 | JWT | 0.9.1 |
+| 构建工具 | Maven | — |
+| Java 版本 | JDK | 1.8 |
+
+## 项目结构
+
+```
+SmartAGl/
+├── ruoyi-admin          # 管理后台 - 应用启动入口
+├── ruoyi-common         # 通用模块 - 工具类、注解、异常处理
+├── ruoyi-framework      # 框架模块 - 核心配置、安全、拦截器
+├── ruoyi-system         # 系统模块 - 用户、角色、菜单、部门管理
+├── ruoyi-quartz         # 定时任务模块
+├── ruoyi-generator      # 代码生成模块
+├── ruoyi-zhunong        # 智慧助农业务模块 ★
+│   ├── controller/      #   农产品/课程/政策/工作/专家/贷款/市场
+│   ├── domain/          #   实体类
+│   ├── mapper/          #   数据访问层
+│   └── service/         #   业务逻辑层
+├── ruoyi-ui             # 前端 UI (Vue 2 + Element UI)
+├── sql/                 # 数据库初始化脚本
+├── doc/                 # 项目文档
+├── Image/               # README 截图素材
+└── pom.xml              # Maven 父 POM
+```
 
 ## 内置功能
 
-1.  用户管理：用户是系统操作者，该功能主要完成系统用户配置。
-2.  部门管理：配置系统组织机构（公司、部门、小组），树结构展现支持数据权限。
-3.  岗位管理：配置系统用户所属担任职务。
-4.  菜单管理：配置系统菜单，操作权限，按钮权限标识等。
-5.  角色管理：角色菜单权限分配、设置角色按机构进行数据范围权限划分。
-6.  字典管理：对系统中经常使用的一些较为固定的数据进行维护。
-7.  参数管理：对系统动态配置常用参数。
-8.  通知公告：系统通知公告信息发布维护。
-9.  操作日志：系统正常操作日志记录和查询；系统异常信息日志记录和查询。
-10. 登录日志：系统登录日志记录查询包含登录异常。
-11. 在线用户：当前系统中活跃用户状态监控。
-12. 定时任务：在线（添加、修改、删除)任务调度包含执行结果日志。
-13. 代码生成：前后端代码的生成（java、html、xml、sql）支持CRUD下载 。
-14. 系统接口：根据业务代码自动生成相关的api接口文档。
-15. 服务监控：监视当前系统CPU、内存、磁盘、堆栈等相关信息。
-16. 缓存监控：对系统的缓存信息查询，命令统计等。
-17. 在线构建器：拖动表单元素生成相应的HTML代码。
-18. 连接池监视：监视当前系统数据库连接池状态，可进行分析SQL找出系统性能瓶颈。
+### 一、系统基础功能（若依框架）
 
-## 在线体验
+| 序号 | 功能 | 说明 |
+|------|------|------|
+| 1 | 用户管理 | 系统用户配置与管理 |
+| 2 | 部门管理 | 组织机构配置（公司、部门、小组），树结构展现 |
+| 3 | 岗位管理 | 用户职务配置 |
+| 4 | 菜单管理 | 系统菜单、操作权限、按钮权限配置 |
+| 5 | 角色管理 | 角色权限分配、数据范围权限划分 |
+| 6 | 字典管理 | 系统常用固定数据维护 |
+| 7 | 参数管理 | 系统动态参数配置 |
+| 8 | 通知公告 | 系统通知公告发布与维护 |
+| 9 | 操作日志 | 操作日志记录与查询 |
+| 10 | 登录日志 | 登录日志记录与异常查询 |
+| 11 | 在线用户 | 活跃用户状态监控 |
+| 12 | 定时任务 | 在线任务调度管理，支持执行结果日志 |
+| 13 | 代码生成 | 前后端代码自动生成（Java、HTML、XML、SQL），支持 CRUD 下载 |
+| 14 | 系统接口 | API 接口文档自动生成 |
+| 15 | 服务监控 | CPU、内存、磁盘、堆栈等系统信息监控 |
+| 16 | 缓存监控 | Redis 缓存信息查询与命令统计 |
+| 17 | 在线构建器 | 拖动表单元素生成 HTML 代码 |
+| 18 | 连接池监视 | 数据库连接池状态监控与 SQL 分析 |
 
-- admin/admin123  
-- 陆陆续续收到一些打赏，为了更好的体验已用于演示服务器升级。谢谢各位小伙伴。
+### 二、智慧农业新增功能
 
-演示地址：http://vue.ruoyi.vip  
-文档地址：http://doc.ruoyi.vip
+| 序号 | 模块 | 功能说明 |
+|------|------|----------|
+| 1 | 🍎 **农产品管理** | 查看和管理农产品信息，支持增删改查与分类检索 |
+| 2 | 📚 **知识课程** | 农业技术知识课程在线浏览与管理，助力技能提升 |
+| 3 | 📋 **补贴政策** | 汇集惠农补贴政策信息，支持分类查询与管理 |
+| 4 | 🌾 **农事工作** | 农事活动记录与管理，包括播种、施肥、收割等全流程 |
+| 5 | 👨‍🌾 **知识专家** | 农业专家信息管理，在线获取专业技术指导 |
+| 6 | 💰 **信用贷款** | 农业信用贷款产品查询与申请管理 |
+| 7 | 🏪 **农产品市场** | 农产品市场行情展示，供需信息发布与管理 |
 
-## 演示图
+## 快速开始
 
-<table>
-    <tr>
-        <td><img src="https://oscimg.oschina.net/oscnet/cd1f90be5f2684f4560c9519c0f2a232ee8.jpg"/></td>
-        <td><img src="https://oscimg.oschina.net/oscnet/1cbcf0e6f257c7d3a063c0e3f2ff989e4b3.jpg"/></td>
-    </tr>
-    <tr>
-        <td><img src="https://oscimg.oschina.net/oscnet/up-8074972883b5ba0622e13246738ebba237a.png"/></td>
-        <td><img src="https://oscimg.oschina.net/oscnet/up-9f88719cdfca9af2e58b352a20e23d43b12.png"/></td>
-    </tr>
-    <tr>
-        <td><img src="https://oscimg.oschina.net/oscnet/up-39bf2584ec3a529b0d5a3b70d15c9b37646.png"/></td>
-        <td><img src="https://oscimg.oschina.net/oscnet/up-936ec82d1f4872e1bc980927654b6007307.png"/></td>
-    </tr>
-	<tr>
-        <td><img src="https://oscimg.oschina.net/oscnet/up-b2d62ceb95d2dd9b3fbe157bb70d26001e9.png"/></td>
-        <td><img src="https://oscimg.oschina.net/oscnet/up-d67451d308b7a79ad6819723396f7c3d77a.png"/></td>
-    </tr>	 
-    <tr>
-        <td><img src="https://oscimg.oschina.net/oscnet/5e8c387724954459291aafd5eb52b456f53.jpg"/></td>
-        <td><img src="https://oscimg.oschina.net/oscnet/644e78da53c2e92a95dfda4f76e6d117c4b.jpg"/></td>
-    </tr>
-	<tr>
-        <td><img src="https://oscimg.oschina.net/oscnet/up-8370a0d02977eebf6dbf854c8450293c937.png"/></td>
-        <td><img src="https://oscimg.oschina.net/oscnet/up-49003ed83f60f633e7153609a53a2b644f7.png"/></td>
-    </tr>
-	<tr>
-        <td><img src="https://oscimg.oschina.net/oscnet/up-d4fe726319ece268d4746602c39cffc0621.png"/></td>
-        <td><img src="https://oscimg.oschina.net/oscnet/up-c195234bbcd30be6927f037a6755e6ab69c.png"/></td>
-    </tr>
-    <tr>
-        <td><img src="https://oscimg.oschina.net/oscnet/b6115bc8c31de52951982e509930b20684a.jpg"/></td>
-        <td><img src="https://oscimg.oschina.net/oscnet/up-5e4daac0bb59612c5038448acbcef235e3a.png"/></td>
-    </tr>
-</table>
+### 环境要求
+
+- JDK >= 1.8
+- Maven >= 3.6
+- MySQL >= 5.7
+- Redis >= 3.0
+- Node.js >= 12
+
+### 后端部署
+
+```bash
+# 1. 克隆项目
+git clone https://gitee.com/baizi-1/SmartAGl.git
+cd SmartAGl
+
+# 2. 导入数据库
+# 在 MySQL 中执行 sql/ry_20240629.sql 和 sql/quartz.sql
+# 再依次执行 courseMenu.sql、expertMenu.sql、policyMenu.sql、workMenu.sql、nb_credit_loan.sql
+
+# 3. 修改数据库配置
+# 编辑 ruoyi-admin/src/main/resources/application-druid.yml
+# 修改数据库连接地址、用户名和密码
+
+# 4. 修改 Redis 配置
+# 编辑 ruoyi-admin/src/main/resources/application.yml
+# 修改 Redis 连接信息（如有密码）
+
+# 5. 编译运行
+mvn clean install
+cd ruoyi-admin
+mvn spring-boot:run
+
+# 或者直接运行启动脚本
+ry.bat    # Windows
+sh ry.sh  # Linux / macOS
+```
+
+### 前端部署
+
+```bash
+# 进入前端目录
+cd ruoyi-ui
+
+# 安装依赖
+npm install --registry=https://registry.npmmirror.com
+
+# 启动开发服务器
+npm run dev
+
+# 浏览器访问 http://localhost:80 进入系统
+```
+
+### 默认账号
+
+- 管理员账号：`admin` / 密码：`admin123`
+- 普通用户账号：`ry` / 密码：`admin123`
+
+## 相关链接
+
+- 若依框架官方：https://ruoyi.vip
+- 若依 Vue 前端：https://gitee.com/y_project/RuoYi-Vue
+- 本项目仓库：https://gitee.com/baizi-1/SmartAGl
+
+## 许可证
+
+本项目基于 [MIT License](./LICENSE) 开源。
 
 
-## 若依前后端分离交流群
-
-QQ群： [![加入QQ群](https://img.shields.io/badge/已满-937441-blue.svg)](https://jq.qq.com/?_wv=1027&k=5bVB1og) [![加入QQ群](https://img.shields.io/badge/已满-887144332-blue.svg)](https://jq.qq.com/?_wv=1027&k=5eiA4DH) [![加入QQ群](https://img.shields.io/badge/已满-180251782-blue.svg)](https://jq.qq.com/?_wv=1027&k=5AxMKlC) [![加入QQ群](https://img.shields.io/badge/已满-104180207-blue.svg)](https://jq.qq.com/?_wv=1027&k=51G72yr) [![加入QQ群](https://img.shields.io/badge/已满-186866453-blue.svg)](https://jq.qq.com/?_wv=1027&k=VvjN2nvu) [![加入QQ群](https://img.shields.io/badge/已满-201396349-blue.svg)](https://jq.qq.com/?_wv=1027&k=5vYAqA05) [![加入QQ群](https://img.shields.io/badge/已满-101456076-blue.svg)](https://jq.qq.com/?_wv=1027&k=kOIINEb5) [![加入QQ群](https://img.shields.io/badge/已满-101539465-blue.svg)](https://jq.qq.com/?_wv=1027&k=UKtX5jhs) [![加入QQ群](https://img.shields.io/badge/已满-264312783-blue.svg)](https://jq.qq.com/?_wv=1027&k=EI9an8lJ) [![加入QQ群](https://img.shields.io/badge/已满-167385320-blue.svg)](https://jq.qq.com/?_wv=1027&k=SWCtLnMz) [![加入QQ群](https://img.shields.io/badge/已满-104748341-blue.svg)](https://jq.qq.com/?_wv=1027&k=96Dkdq0k) [![加入QQ群](https://img.shields.io/badge/已满-160110482-blue.svg)](https://jq.qq.com/?_wv=1027&k=0fsNiYZt) [![加入QQ群](https://img.shields.io/badge/已满-170801498-blue.svg)](https://jq.qq.com/?_wv=1027&k=7xw4xUG1) [![加入QQ群](https://img.shields.io/badge/已满-108482800-blue.svg)](https://jq.qq.com/?_wv=1027&k=eCx8eyoJ) [![加入QQ群](https://img.shields.io/badge/已满-101046199-blue.svg)](https://jq.qq.com/?_wv=1027&k=SpyH2875) [![加入QQ群](https://img.shields.io/badge/已满-136919097-blue.svg)](https://jq.qq.com/?_wv=1027&k=tKEt51dz) [![加入QQ群](https://img.shields.io/badge/已满-143961921-blue.svg)](http://qm.qq.com/cgi-bin/qm/qr?_wv=1027&k=0vBbSb0ztbBgVtn3kJS-Q4HUNYwip89G&authKey=8irq5PhutrZmWIvsUsklBxhj57l%2F1nOZqjzigkXZVoZE451GG4JHPOqW7AW6cf0T&noverify=0&group_code=143961921) [![加入QQ群](https://img.shields.io/badge/已满-174951577-blue.svg)](http://qm.qq.com/cgi-bin/qm/qr?_wv=1027&k=ZFAPAbp09S2ltvwrJzp7wGlbopsc0rwi&authKey=HB2cxpxP2yspk%2Bo3WKTBfktRCccVkU26cgi5B16u0KcAYrVu7sBaE7XSEqmMdFQp&noverify=0&group_code=174951577) [![加入QQ群](https://img.shields.io/badge/已满-161281055-blue.svg)](http://qm.qq.com/cgi-bin/qm/qr?_wv=1027&k=Fn2aF5IHpwsy8j6VlalNJK6qbwFLFHat&authKey=uyIT%2B97x2AXj3odyXpsSpVaPMC%2Bidw0LxG5MAtEqlrcBcWJUA%2FeS43rsF1Tg7IRJ&noverify=0&group_code=161281055) [![加入QQ群](https://img.shields.io/badge/已满-138988063-blue.svg)](http://qm.qq.com/cgi-bin/qm/qr?_wv=1027&k=XIzkm_mV2xTsUtFxo63bmicYoDBA6Ifm&authKey=dDW%2F4qsmw3x9govoZY9w%2FoWAoC4wbHqGal%2BbqLzoS6VBarU8EBptIgPKN%2FviyC8j&noverify=0&group_code=138988063) [![加入QQ群](https://img.shields.io/badge/151450850-blue.svg)](http://qm.qq.com/cgi-bin/qm/qr?_wv=1027&k=DkugnCg68PevlycJSKSwjhFqfIgrWWwR&authKey=pR1Pa5lPIeGF%2FFtIk6d%2FGB5qFi0EdvyErtpQXULzo03zbhopBHLWcuqdpwY241R%2F&noverify=0&group_code=151450850) 点击按钮入群。
